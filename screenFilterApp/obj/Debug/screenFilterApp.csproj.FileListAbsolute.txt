@@ -1,0 +1,15 @@
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\bin\Debug\screenFilterApp.exe.config
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\bin\Debug\screenFilterApp.exe
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\bin\Debug\screenFilterApp.pdb
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.csprojAssemblyReference.cache
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\MainWindow.g.cs
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\App.g.cs
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp_MarkupCompile.cache
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp_MarkupCompile.lref
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\MainWindow.baml
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.g.resources
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.Properties.Resources.resources
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.csproj.GenerateResource.cache
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.csproj.CoreCompileInputs.cache
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.exe
+Z:\IGMProfile\Courses\screen-filter-app\screenFilterApp\obj\Debug\screenFilterApp.pdb
