@@ -24,5 +24,9 @@ namespace screenFilterApp
         {
             InitializeComponent();
         }
+        private void CaptureScreenButtonClick()
+        {
+
+        }
     }
 }
