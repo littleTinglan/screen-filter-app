@@ -5,15 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:screenFilterApp"
         mc:Ignorable="d"
-        Title="Screen Filter" Height="450" Width="800" Topmost="True">
-    <Grid>
-        <StackPanel x:Name="myPanel">
-            <WrapPanel Width="760" Height="360" Margin="10" x:Name="myWrapPanel">
-                <Image x:Name="capturedImg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"/>
-            </WrapPanel>
-            <Button x:Name="captureScreenBtn" Height="30" Width="200" BorderBrush="Black"  
-                Content="Capture Screen"/>
-        </StackPanel>
-        
-    </Grid>
+        Title="Screen Filter" Height="450" Width="800">
+
+    <Button Name="Button1" Height="30" Width="200" BorderBrush="Black"  
+                Content="Click Me!"/>
 </Window>
