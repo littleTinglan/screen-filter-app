@@ -4,6 +4,12 @@
              xmlns:local="clr-namespace:screenFilterApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="WindowBorder" TargetType="local:MainWindow">
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="AllowsTransparency" Value="True"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Green"/>
+            <Setter Property="BorderThickness" Value="5"/>
+        </Style>
     </Application.Resources>
 </Application>

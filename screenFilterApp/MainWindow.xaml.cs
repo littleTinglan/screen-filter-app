@@ -22,7 +22,7 @@ namespace screenFilterApp
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : System.Windows.Window
     {
         /* Struct for RECT --- equivalent to C++ LPRECT
            Returns:
@@ -146,9 +146,20 @@ namespace screenFilterApp
         public MainWindow()
         {
             InitializeComponent();
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Close,
+                new ExecutedRoutedEventHandler(delegate (object sender, ExecutedRoutedEventArgs args) { this.Close(); })));
         }
+
+        public void DragWindow(object sender, MouseButtonEventArgs args)
+        {
+            DragMove();
+        }
+
         private void CaptureScreenButtonClick(object sender, RoutedEventArgs e)
         {
+            // show a second window
+            FilterdImage imageWindow = new FilterdImage();
+            
             // Hide UI when capture
             this.Hide();
 
@@ -159,12 +170,12 @@ namespace screenFilterApp
 
             // Create an empty Bitmap to store the screen shot
             Bitmap screenshotBmp;
-            screenshotBmp = new System.Drawing.Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            screenshotBmp = new System.Drawing.Bitmap((int)myImgPanel.ActualWidth, (int)myImgPanel.ActualHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
             // Get a graphics context from the empty bitmap
             using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(screenshotBmp))
             {
-                g.CopyFromScreen((int)this.Left, (int)this.Top, 0, 0, screenshotBmp.Size);
+                g.CopyFromScreen((int)this.Left, (int)this.Top + (int)myTitle.ActualHeight, 0, 0, screenshotBmp.Size);
             }
 
             IntPtr handle = IntPtr.Zero;
@@ -174,7 +185,7 @@ namespace screenFilterApp
                 handle = screenshotBmp.GetHbitmap();
 
                 // convert from the .NET image format to the WPF image format
-                capturedImg.Source = Imaging.CreateBitmapSourceFromHBitmap(handle,
+                imageWindow.capturedImg.Source = Imaging.CreateBitmapSourceFromHBitmap(handle,
                                                             IntPtr.Zero, Int32Rect.Empty,
                                                             BitmapSizeOptions.FromEmptyOptions());
             }
@@ -183,6 +194,9 @@ namespace screenFilterApp
                 DeleteObject(handle);
             }
             this.Show();
+
+            imageWindow.ShowDialog();
+
         }
 
 

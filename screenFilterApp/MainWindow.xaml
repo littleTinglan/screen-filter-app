@@ -5,14 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:screenFilterApp"
         mc:Ignorable="d"
-        Title="Screen Filter" Height="450" Width="800" Topmost="True">
-    <Grid>
-        <StackPanel x:Name="myPanel">
-            <WrapPanel Width="760" Height="360" Margin="10" x:Name="myWrapPanel">
-                <Image x:Name="capturedImg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"/>
-            </WrapPanel>
-            <Button x:Name="captureScreenBtn" Height="30" Width="200" BorderBrush="Black"  
-                Content="Capture Screen" Click="CaptureScreenButtonClick"/>
+        Title="Screen Filter" Height="450" Width="800" Topmost="True" Style="{StaticResource WindowBorder}">
+
+    <Grid MouseLeftButtonDown="DragWindow">
+        <StackPanel>
+            <Grid x:Name="myTitle" Background="#3d3d40">
+                <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="7" 
+                  Width="15" Height="15" Padding="0" Command="ApplicationCommands.Close"/>
+            </Grid>
+            <StackPanel x:Name="myImgPanel">
+                <WrapPanel Width="760" Height="360" Margin="10" x:Name="myWrapPanel">
+                </WrapPanel>
+                <Button x:Name="captureScreenBtn" Height="30" Width="200" BorderBrush="Black"  
+                    Content="Capture Screen" Click="CaptureScreenButtonClick"/>
+            </StackPanel>
         </StackPanel>
         
     </Grid>
