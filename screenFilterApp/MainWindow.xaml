@@ -11,7 +11,7 @@
         <StackPanel>
             <Grid x:Name="myTitle" Background="#3d3d40">
                 <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="7" 
-                  Width="15" Height="15" Padding="0" Command="ApplicationCommands.Close"/>
+                  Width="15" Height="15" Padding="0" Click="CloseClicked"/>
             </Grid>
             <StackPanel x:Name="myImgPanel">
                 <WrapPanel Width="760" Height="360" Margin="10" x:Name="myWrapPanel">

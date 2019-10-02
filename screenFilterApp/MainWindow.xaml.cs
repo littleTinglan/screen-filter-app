@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using System.Threading;
 
 
 namespace screenFilterApp
@@ -24,6 +25,9 @@ namespace screenFilterApp
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+        // Global var
+        FilterdImage imageWindow;
+
         /* Struct for RECT --- equivalent to C++ LPRECT
            Returns:
                left (int)   : topLeft.x
@@ -148,20 +152,32 @@ namespace screenFilterApp
             InitializeComponent();
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close,
                 new ExecutedRoutedEventHandler(delegate (object sender, ExecutedRoutedEventArgs args) { this.Close(); })));
+
+            // Initiate the FilteredImage window
+            imageWindow = new FilterdImage();
         }
 
+        // User Controls
         public void DragWindow(object sender, MouseButtonEventArgs args)
         {
             DragMove();
         }
+        
+        public void CloseClicked(object sender, RoutedEventArgs e)
+        {
+            imageWindow.Close();
+            this.Close();
+        }
 
         private void CaptureScreenButtonClick(object sender, RoutedEventArgs e)
         {
-            // show a second window
-            FilterdImage imageWindow = new FilterdImage();
-            
             // Hide UI when capture
+            imageWindow.Hide();
+            // Wait for the Hide() to finish
+            Thread.Sleep(140);
+
             this.Hide();
+
 
             // Calculate the current client width and hight
             RECT clientRect = GetClientRect(new WindowInteropHelper(this).Handle);
@@ -195,7 +211,7 @@ namespace screenFilterApp
             }
             this.Show();
 
-            imageWindow.ShowDialog();
+            imageWindow.Show();
 
         }
 
