@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="FilterdImage" Height="450" Width="800">
     <Grid>
-        <Image x:Name="capturedImg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"/>
+        <StackPanel>
+            <Image x:Name="capturedImg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"/>
+            <Button x:Name="applyFilterButon" Height="30" Width="200" BorderBrush="Black"
+                    Content="Apply Filter" Click="ApplyColorBlindFilter"/>
+        </StackPanel>
     </Grid>
 </Window>

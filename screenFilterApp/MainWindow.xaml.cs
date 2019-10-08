@@ -212,7 +212,6 @@ namespace screenFilterApp
             this.Show();
 
             imageWindow.Show();
-
         }
 
 

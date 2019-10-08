@@ -9,7 +9,7 @@
 
     <Grid MouseLeftButtonDown="DragWindow">
         <StackPanel>
-            <Grid x:Name="myTitle" Background="#3d3d40">
+            <Grid x:Name="myTitle" Background="WhiteSmoke">
                 <Button Content="X" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5" FontSize="7" 
                   Width="15" Height="15" Padding="0" Click="CloseClicked"/>
             </Grid>
