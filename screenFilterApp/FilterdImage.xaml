@@ -9,15 +9,15 @@
     <Grid>
         
         <DockPanel>
-            <Border Width="120" Background="#676d6e" BorderBrush="#181c1c" BorderThickness="1" DockPanel.Dock="Left">
+            <Border Width="140" Background="#676d6e" BorderBrush="#181c1c" BorderThickness="1" DockPanel.Dock="Left">
                 <StackPanel>
-                    <StackPanel x:Name="FilterTypeStackPanel" HorizontalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Center">
                         <Label FontWeight="Bold" Foreground="White">Types:</Label>
-                        <RadioButton Content="Normal" Foreground="White" Margin="0,4,0,0"/>
-                        <RadioButton Content="Protanopia" Foreground="White" Margin="0,4,0,0"/>
-                        <RadioButton Content="Protanomaly" Foreground="White" Margin="0,4,0,0"/>
-                        <RadioButton Content="Tritanomaly" Foreground="White" Margin="0,4,0,0"/>
-                        <RadioButton Content="Achromatopsia" Foreground="White" Margin="0,4,0,0"/>
+                        <RadioButton x:Name="normal_btn" Content="Normal" Foreground="White" Margin="0,4,0,0" IsChecked="True" Click="ChangeColorMode"/>
+                        <RadioButton x:Name="protanopia_btn" Content="Protanopia" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+                        <RadioButton x:Name="protanomaly_btn" Content="Protanomaly" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+                        <RadioButton x:Name="tritanomaly_btn" Content="Tritanomaly" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+                        <RadioButton x:Name="totalColorBlind_btn" Content="Total Colorblind" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
                     </StackPanel>
                     <Button x:Name="applyFilterButon" Height="30" Width="100" BorderBrush="Black" Content="Apply Filter" Click="ApplyColorBlindFilter" Margin="0,40,0,0"/>
                 </StackPanel>

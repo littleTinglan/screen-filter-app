@@ -37,11 +37,18 @@ namespace screenFilterApp
     /// </summary>
     public partial class FilterdImage : Window
     {
-
+        // Public variables
+        MyColor blindRed, blindGreen, blindBlue;
 
         public FilterdImage()
         {
             InitializeComponent();
+
+            // defual color mode to Normal
+            // Normal
+            blindRed = new MyColor(1, 0, 0);
+            blindGreen = new MyColor(0, 1, 0);
+            blindBlue = new MyColor(0, 0, 1);
 
             this.Closing += FilterdImage_Closing;
         }
@@ -50,6 +57,45 @@ namespace screenFilterApp
         {
             e.Cancel = true;
             this.Hide();
+        }
+
+        private void ChangeColorMode(object sender, RoutedEventArgs e)
+        {
+            if (normal_btn.IsChecked == true)
+            {
+                // Normal
+                blindRed = new MyColor(1, 0, 0);
+                blindGreen = new MyColor(0, 1, 0);
+                blindBlue = new MyColor(0, 0, 1);
+            }
+            else if (protanopia_btn.IsChecked == true)
+            {
+                // Protanopia
+                blindRed = new MyColor(0.56f, 0.43f, 0);
+                blindGreen = new MyColor(0.55f, 0.44f, 0);
+                blindBlue = new MyColor(0, 0.24f, 0.75f);
+            }
+            else if (protanomaly_btn.IsChecked == true)
+            {
+                // Protanomaly
+                blindRed = new MyColor(0.81f, 0.19f, 0);
+                blindGreen = new MyColor(0.335f, 0.665f, 0);
+                blindBlue = new MyColor(0, 0.125f, 0.875f);
+            }
+            else if (tritanomaly_btn.IsChecked == true)
+            {
+                // Tritanomaly
+                blindRed = new MyColor(0.96f, 0.3f, 0);
+                blindGreen = new MyColor(0.0f, 0.73f, 0.26f);
+                blindBlue = new MyColor(0, 0.18f, 0.81f);
+            }
+            else if (totalColorBlind_btn.IsChecked == true)
+            {
+                // Achromatopsia
+                blindRed = new MyColor(0.29f, 0.58f, 0.11f);
+                blindGreen = new MyColor(0.29f, 0.58f, 0.11f);
+                blindBlue = new MyColor(0.29f, 0.58f, 0.11f);
+            }
         }
 
         private void ApplyColorBlindFilter(object sender, RoutedEventArgs e)
@@ -69,41 +115,12 @@ namespace screenFilterApp
                 imageBitmap = new Bitmap(outStream);
             }
 
-
             uint[] pixels = new uint[width * height];
 
             int red;
             int green;
             int blue;
             int alpha;
-
-            // Normal
-            //MyColor blindRed = new MyColor(1,0,0);
-            //MyColor blindGreen = new MyColor(0, 1, 0);
-            //MyColor blindblue = new MyColor(0, 0, 1);
-
-            // Protanopia
-            MyColor blindRed = new MyColor(0.56f, 0.43f, 0);
-            MyColor blindGreen = new MyColor(0.55f, 0.44f, 0);
-            MyColor blindblue = new MyColor(0, 0.24f, 0.75f);
-
-            // Protanomaly
-            //MyColor blindRed = new MyColor(0.81f, 0.19f, 0);
-            //MyColor blindGreen = new MyColor(0.335f, 0.665f, 0);
-            //MyColor blindblue = new MyColor(0, 0.125f, 0.875f);
-
-            // Tritanomaly
-            //MyColor blindRed = new MyColor(0.96f, 0.3f, 0);
-            //MyColor blindGreen = new MyColor(0.0f, 0.73f, 0.26f);
-            //MyColor blindblue = new MyColor(0, 0.18f, 0.81f);
-
-            // Achromatopsia
-            //MyColor blindRed = new MyColor(0.29f, 0.58f, 0.11f);
-            //MyColor blindGreen = new MyColor(0.29f, 0.58f, 0.11f);
-            //MyColor blindblue = new MyColor(0.29f, 0.58f, 0.11f);
-
-
-
 
             for (int x = 0; x < width; ++x)
             {
@@ -114,7 +131,7 @@ namespace screenFilterApp
 
                     red = (int)(pixColor.R * blindRed.r + pixColor.G * blindRed.g + pixColor.B * blindRed.b);
                     green = (int)(pixColor.R * blindGreen.r + pixColor.G * blindGreen.g + pixColor.B * blindGreen.b);
-                    blue = (int)(pixColor.R * blindblue.r + pixColor.G * blindblue.g + pixColor.B * blindblue.b);
+                    blue = (int)(pixColor.R * blindBlue.r + pixColor.G * blindBlue.g + pixColor.B * blindBlue.b);
                     alpha = pixColor.A;
 
                     pixels[i] = (uint)((alpha << 24) + (red << 16) + (green << 8) + blue);
