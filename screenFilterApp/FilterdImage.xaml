@@ -7,10 +7,28 @@
         mc:Ignorable="d"
         Title="FilterdImage" Height="450" Width="800">
     <Grid>
-        <StackPanel>
-            <Image x:Name="capturedImg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"/>
-            <Button x:Name="applyFilterButon" Height="30" Width="200" BorderBrush="Black"
-                    Content="Apply Filter" Click="ApplyColorBlindFilter"/>
-        </StackPanel>
+        
+        <DockPanel>
+            <Border Width="120" Background="#676d6e" BorderBrush="#181c1c" BorderThickness="1" DockPanel.Dock="Left">
+                <StackPanel>
+                    <StackPanel x:Name="FilterTypeStackPanel" HorizontalAlignment="Center">
+                        <Label FontWeight="Bold" Foreground="White">Types:</Label>
+                        <RadioButton Content="Normal" Foreground="White" Margin="0,4,0,0"/>
+                        <RadioButton Content="Protanopia" Foreground="White" Margin="0,4,0,0"/>
+                        <RadioButton Content="Protanomaly" Foreground="White" Margin="0,4,0,0"/>
+                        <RadioButton Content="Tritanomaly" Foreground="White" Margin="0,4,0,0"/>
+                        <RadioButton Content="Achromatopsia" Foreground="White" Margin="0,4,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="applyFilterButon" Height="30" Width="100" BorderBrush="Black" Content="Apply Filter" Click="ApplyColorBlindFilter" Margin="0,40,0,0"/>
+                </StackPanel>
+            </Border>
+            <Border>
+                <Image x:Name="capturedImg" RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"/>
+            </Border>
+            
+           
+        </DockPanel>
+            
+        
     </Grid>
 </Window>
