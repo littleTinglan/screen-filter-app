@@ -162,7 +162,7 @@ namespace screenFilterApp
         {
             DragMove();
         }
-        
+
         public void CloseClicked(object sender, RoutedEventArgs e)
         {
             imageWindow.Close();
