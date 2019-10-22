@@ -187,7 +187,7 @@ namespace screenFilterApp
 
             // Create an empty Bitmap to store the screen shot
             Bitmap screenshotBmp;
-            screenshotBmp = new System.Drawing.Bitmap((int)myImgPanel.ActualWidth, (int)myImgPanel.ActualHeight, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            screenshotBmp = new System.Drawing.Bitmap((int)(myImgPanel.ActualWidth * factor), (int)(myImgPanel.ActualHeight * factor), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
             // Get a graphics context from the empty bitmap
             using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(screenshotBmp))
@@ -212,6 +212,7 @@ namespace screenFilterApp
             }
             this.Show();
 
+            imageWindow.StoreImage();
             imageWindow.Show();
         }
 

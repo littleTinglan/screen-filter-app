@@ -40,6 +40,8 @@ namespace screenFilterApp
         // Public variables
         MyColor blindRed, blindGreen, blindBlue;
 
+        BitmapSource defaultImg;
+
         public FilterdImage()
         {
             InitializeComponent();
@@ -51,6 +53,11 @@ namespace screenFilterApp
             blindBlue = new MyColor(0, 0, 1);
 
             this.Closing += FilterdImage_Closing;
+        }
+
+        public void StoreImage()
+        {
+            defaultImg = (BitmapSource)capturedImg.Source;
         }
 
         private void FilterdImage_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -110,7 +117,7 @@ namespace screenFilterApp
             using (MemoryStream outStream = new MemoryStream())
             {
                 BitmapEncoder encoder = new BmpBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create((BitmapSource)capturedImg.Source));
+                encoder.Frames.Add(BitmapFrame.Create(defaultImg));
                 encoder.Save(outStream);
                 imageBitmap = new Bitmap(outStream);
             }
