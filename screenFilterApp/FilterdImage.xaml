@@ -9,14 +9,25 @@
     <Grid>
         
         <DockPanel>
-            <Border Width="140" Background="#676d6e" BorderBrush="#181c1c" BorderThickness="1" DockPanel.Dock="Left">
+            <Border Width="160" Background="#676d6e" BorderBrush="#181c1c" BorderThickness="1" DockPanel.Dock="Left">
                 <StackPanel>
                     <StackPanel HorizontalAlignment="Center">
-                        <Label FontWeight="Bold" Foreground="White">Types:</Label>
+                        <Label FontWeight="Bold" Foreground="White" FontSize="18">Types:</Label>
                         <RadioButton x:Name="normal_btn" Content="Normal" Foreground="White" Margin="0,4,0,0" IsChecked="True" Click="ChangeColorMode"/>
+                        
+                        <Label Foreground="White" FontWeight="Bold" Margin="0,4,0,0">- Protan Color Blindness</Label>
                         <RadioButton x:Name="protanopia_btn" Content="Protanopia" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
                         <RadioButton x:Name="protanomaly_btn" Content="Protanomaly" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+
+                        <Label Foreground="White" FontWeight="Bold" Margin="0,4,0,0">- Deutan Color Blindness</Label>
+                        <RadioButton x:Name="deuteranopia_btn" Content="Deuteranopia" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+                        <RadioButton x:Name="deuteranomaly_btn" Content="Deuteranomaly" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+
+                        <Label Foreground="White" FontWeight="Bold" Margin="0,4,0,0">- Tritan Color Blindness</Label>
+                        <RadioButton x:Name="tritanopia_btn" Content="Tritanopia" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
                         <RadioButton x:Name="tritanomaly_btn" Content="Tritanomaly" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
+
+                        <Label Foreground="White" FontWeight="Bold" Margin="0,4,0,0">- Others</Label>
                         <RadioButton x:Name="totalColorBlind_btn" Content="Total Colorblind" Foreground="White" Margin="0,4,0,0" Click="ChangeColorMode"/>
                     </StackPanel>
                     <Button x:Name="applyFilterButon" Height="30" Width="100" BorderBrush="Black" Content="Apply Filter" Click="ApplyColorBlindFilter" Margin="0,40,0,0"/>

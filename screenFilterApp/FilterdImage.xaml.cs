@@ -78,23 +78,44 @@ namespace screenFilterApp
             else if (protanopia_btn.IsChecked == true)
             {
                 // Protanopia
-                blindRed = new MyColor(0.56f, 0.43f, 0);
-                blindGreen = new MyColor(0.55f, 0.44f, 0);
-                blindBlue = new MyColor(0, 0.24f, 0.75f);
+                blindRed = new MyColor(0.5667f, 0.4333f, 0);
+                blindGreen = new MyColor(0.5583f, 0.4417f, 0);
+                blindBlue = new MyColor(0, 0.2417f, 0.7583f);
             }
             else if (protanomaly_btn.IsChecked == true)
             {
                 // Protanomaly
-                blindRed = new MyColor(0.81f, 0.19f, 0);
-                blindGreen = new MyColor(0.335f, 0.665f, 0);
+                blindRed = new MyColor(0.8137f, 0.1833f, 0);
+                blindGreen = new MyColor(0.3333f, 0.6667f, 0);
                 blindBlue = new MyColor(0, 0.125f, 0.875f);
+            }
+            else if (deuteranopia_btn.IsChecked == true)
+            {
+                // Protanomaly
+                blindRed = new MyColor(0.625f, 0.375f, 0);
+                blindGreen = new MyColor(0.7f, 0.3f, 0);
+                blindBlue = new MyColor(0, 0.3f, 0.7f);
+            }
+            else if (deuteranomaly_btn.IsChecked == true)
+            {
+                // Protanomaly
+                blindRed = new MyColor(0.8f, 0.2f, 0);
+                blindGreen = new MyColor(0.2583f, 0.7417f, 0);
+                blindBlue = new MyColor(0, 0.1417f, 0.8583f);
             }
             else if (tritanomaly_btn.IsChecked == true)
             {
                 // Tritanomaly
-                blindRed = new MyColor(0.96f, 0.3f, 0);
-                blindGreen = new MyColor(0.0f, 0.73f, 0.26f);
-                blindBlue = new MyColor(0, 0.18f, 0.81f);
+                blindRed = new MyColor(0.9667f, 0.3333f, 0);
+                blindGreen = new MyColor(0.0f, 0.7333f, 0.2667f);
+                blindBlue = new MyColor(0, 0.1833f, 0.8167f);
+            }
+            else if (tritanopia_btn.IsChecked == true)
+            {
+                // Tritanomaly
+                blindRed = new MyColor(0.95f, 0.5f, 0);
+                blindGreen = new MyColor(0.0f, 0.4333f, 0.5667f);
+                blindBlue = new MyColor(0, 0.475f, 0.525f);
             }
             else if (totalColorBlind_btn.IsChecked == true)
             {
