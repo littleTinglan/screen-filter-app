@@ -16,18 +16,18 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Threading;
-
+using NativeHelpers;
 
 namespace screenFilterApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : System.Windows.Window
+    public partial class MainWindow : PerMonitorDPIWindow
     {
         // Global var
         FilterdImage imageWindow;
-
+        double factor = 1.0;
         /* Struct for RECT --- equivalent to C++ LPRECT
            Returns:
                left (int)   : topLeft.x
@@ -178,6 +178,7 @@ namespace screenFilterApp
 
             this.Hide();
 
+            factor = this.CurrentDPI / 96;
 
             // Calculate the current client width and hight
             RECT clientRect = GetClientRect(new WindowInteropHelper(this).Handle);
@@ -191,7 +192,7 @@ namespace screenFilterApp
             // Get a graphics context from the empty bitmap
             using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(screenshotBmp))
             {
-                g.CopyFromScreen((int)this.Left, (int)this.Top + (int)myTitle.ActualHeight, 0, 0, screenshotBmp.Size);
+                g.CopyFromScreen((int)(this.Left * factor), (int)((this.Top + myTitle.ActualHeight) * factor), 0, 0, screenshotBmp.Size);
             }
 
             IntPtr handle = IntPtr.Zero;
