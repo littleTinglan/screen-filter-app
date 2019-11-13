@@ -193,35 +193,7 @@ namespace screenFilterApp
             int width = clientRect.Right - clientRect.Left;
             int height = clientRect.Bottom - clientRect.Top;
 
-            // Create an empty Bitmap to store the screen shot
-            Bitmap screenshotBmp;
-            screenshotBmp = new System.Drawing.Bitmap((int)(myImgPanel.ActualWidth * factor), (int)(myImgPanel.ActualHeight * factor), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-
-            // Get a graphics context from the empty bitmap
-            using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(screenshotBmp))
-            {
-                g.CopyFromScreen((int)(this.Left * factor), (int)((this.Top + myTitle.ActualHeight) * factor), 0, 0, screenshotBmp.Size);
-            }
-
-            IntPtr handle = IntPtr.Zero;
-            try
-            {
-                // Get the GDI andle for the Bitmap
-                handle = screenshotBmp.GetHbitmap();
-
-                // convert from the .NET image format to the WPF image format
-                imageWindow.capturedImg.Source = Imaging.CreateBitmapSourceFromHBitmap(handle,
-                                                            IntPtr.Zero, Int32Rect.Empty,
-                                                            BitmapSizeOptions.FromEmptyOptions());
-            }
-            finally
-            {
-                DeleteObject(handle);
-            }
-            this.Show();
-
-            imageWindow.StoreImage();
-            imageWindow.Show();
+            TakeScreenShot();
         }
 
         private void LiveUpdatenButtonClick(object sender, RoutedEventArgs e)
@@ -253,6 +225,12 @@ namespace screenFilterApp
         {
             factor = this.CurrentDPI / 96;
 
+            TakeScreenShot();
+        }
+
+        //helper function
+        private void TakeScreenShot()
+        {
             // Create an empty Bitmap to store the screen shot
             Bitmap screenshotBmp;
             screenshotBmp = new System.Drawing.Bitmap((int)(myImgPanel.ActualWidth * factor), (int)(myImgPanel.ActualHeight * factor), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
