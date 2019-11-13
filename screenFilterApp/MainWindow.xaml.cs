@@ -16,6 +16,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using System.Threading;
+using System.Windows.Threading;
 using NativeHelpers;
 
 namespace screenFilterApp
@@ -27,6 +28,7 @@ namespace screenFilterApp
     {
         // Global var
         FilterdImage imageWindow;
+        DispatcherTimer myTimer;
         double factor = 1.0;
         /* Struct for RECT --- equivalent to C++ LPRECT
            Returns:
@@ -155,6 +157,12 @@ namespace screenFilterApp
 
             // Initiate the FilteredImage window
             imageWindow = new FilterdImage();
+
+            // Timer setup
+            myTimer = new System.Windows.Threading.DispatcherTimer();
+            myTimer.Interval = new TimeSpan(0, 0, 0); // tick every 5 seconds
+
+
         }
 
         // User Controls
@@ -216,6 +224,63 @@ namespace screenFilterApp
             imageWindow.Show();
         }
 
+        private void LiveUpdatenButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Hide the "LiveUpdateBtn"
+            liveUpdateBtn.Visibility = Visibility.Collapsed;
+            if (stopUpdateBtn.Visibility == Visibility.Collapsed)
+            {
+                stopUpdateBtn.Visibility = Visibility.Visible;
+            }
 
+            myTimer.Tick += new EventHandler(DispatcherTimer_Tick);
+            myTimer.Start();
+        }
+
+        private void StopUpdatenButtonClick(object sender, RoutedEventArgs e)
+        {
+            // Show the "LiveUpdateBtn"
+            stopUpdateBtn.Visibility = Visibility.Collapsed;
+            if(liveUpdateBtn.Visibility == Visibility.Collapsed)
+            {
+                liveUpdateBtn.Visibility = Visibility.Visible;
+            }
+
+            myTimer.Stop();
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            factor = this.CurrentDPI / 96;
+
+            // Create an empty Bitmap to store the screen shot
+            Bitmap screenshotBmp;
+            screenshotBmp = new System.Drawing.Bitmap((int)(myImgPanel.ActualWidth * factor), (int)(myImgPanel.ActualHeight * factor), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+
+            // Get a graphics context from the empty bitmap
+            using (System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(screenshotBmp))
+            {
+                g.CopyFromScreen((int)(this.Left * factor), (int)((this.Top + myTitle.ActualHeight) * factor), 0, 0, screenshotBmp.Size);
+            }
+
+            IntPtr handle = IntPtr.Zero;
+            try
+            {
+                // Get the GDI andle for the Bitmap
+                handle = screenshotBmp.GetHbitmap();
+
+                // convert from the .NET image format to the WPF image format
+                imageWindow.capturedImg.Source = Imaging.CreateBitmapSourceFromHBitmap(handle,
+                                                            IntPtr.Zero, Int32Rect.Empty,
+                                                            BitmapSizeOptions.FromEmptyOptions());
+            }
+            finally
+            {
+                DeleteObject(handle);
+            }
+            imageWindow.StoreImage();
+            imageWindow.Show();
+        }
     }
+
 }

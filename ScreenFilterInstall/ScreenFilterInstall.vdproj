@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_7C8DB480224B19FDF0E0BFE15DD2B359"
-        "OwnerKey" = "8:_C8F29981603D47F8BC973846BFBDD065"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_968A578E3F21A5996DB865A1014ED14D"
         "OwnerKey" = "8:_C8F29981603D47F8BC973846BFBDD065"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,8 +27,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C9551323866EF6E71E940857D24804C1"
+        "OwnerKey" = "8:_C8F29981603D47F8BC973846BFBDD065"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_968A578E3F21A5996DB865A1014ED14D"
+        "OwnerKey" = "8:_C9551323866EF6E71E940857D24804C1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7C8DB480224B19FDF0E0BFE15DD2B359"
+        "OwnerKey" = "8:_968A578E3F21A5996DB865A1014ED14D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -67,6 +67,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -83,6 +99,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -104,7 +128,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
+                "FrameworkVersion" = "8:v4.6.1"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=671728"
                 }
@@ -112,20 +136,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7C8DB480224B19FDF0E0BFE15DD2B359"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_968A578E3F21A5996DB865A1014ED14D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:NativeHelpers, Version=1.0.7233.38928, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_7C8DB480224B19FDF0E0BFE15DD2B359"
+                    "_968A578E3F21A5996DB865A1014ED14D"
                     {
-                    "Name" = "8:NativeHelpers.dll"
+                    "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:NativeHelpers.dll"
+            "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E72C6A336E234B2C90BCF11D83F43A4B"
@@ -143,20 +167,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_968A578E3F21A5996DB865A1014ED14D"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C9551323866EF6E71E940857D24804C1"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:NativeHelpers, Version=1.0.7233.38928, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_968A578E3F21A5996DB865A1014ED14D"
+                    "_C9551323866EF6E71E940857D24804C1"
                     {
-                    "Name" = "8:System.Net.Http.dll"
+                    "Name" = "8:NativeHelpers.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.Net.Http.dll"
+            "SourcePath" = "8:NativeHelpers.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E72C6A336E234B2C90BCF11D83F43A4B"
@@ -231,11 +255,11 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ScreenFilterInstall"
         "ProductCode" = "8:{536C188A-57E8-475D-B418-1E12421C0D7F}"
-        "PackageCode" = "8:{393C9D2B-09A3-4EBF-A25A-D715D7344FEF}"
+        "PackageCode" = "8:{CC1D35AD-F5AB-4509-938F-4BA1C8E530BE}"
         "UpgradeCode" = "8:{9977D37A-0618-46E0-A7F3-37A99A1D8317}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
@@ -752,7 +776,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C8F29981603D47F8BC973846BFBDD065"
             {
-            "SourcePath" = "8:..\\screenFilterApp\\obj\\Release\\screenFilterApp.exe"
+            "SourcePath" = "8:..\\screenFilterApp\\obj\\Debug\\screenFilterApp.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E72C6A336E234B2C90BCF11D83F43A4B"

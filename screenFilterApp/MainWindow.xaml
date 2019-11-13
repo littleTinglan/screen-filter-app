@@ -18,8 +18,18 @@
             <StackPanel x:Name="myImgPanel" DockPanel.Dock="Bottom">
                 <WrapPanel Width="760" Height="360" Margin="10" x:Name="myWrapPanel">
                 </WrapPanel>
-                <Button x:Name="captureScreenBtn" Height="30" Width="200" BorderBrush="Black"  
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="captureScreenBtn" Grid.Column="0" Height="30" Width="200" BorderBrush="Black"  
                     Content="Capture Screen" Click="CaptureScreenButtonClick"/>
+                    <Button x:Name="liveUpdateBtn" Grid.Column="1" Height="30" Width="200" BorderBrush="Black"  
+                    Content="Live Update" Click="LiveUpdatenButtonClick"/>
+                    <Button x:Name="stopUpdateBtn" Grid.Column="1" Height="30" Width="200" BorderBrush="Black"  
+                    Content="Stop Update" Click="StopUpdatenButtonClick" Visibility="Collapsed"/>
+                </Grid>
             </StackPanel>
         </DockPanel>
         
