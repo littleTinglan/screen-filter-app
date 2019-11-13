@@ -52,6 +52,9 @@ namespace screenFilterApp
             blindGreen = new MyColor(0, 1, 0);
             blindBlue = new MyColor(0, 0, 1);
 
+            // start up location
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             this.Closing += FilterdImage_Closing;
         }
 

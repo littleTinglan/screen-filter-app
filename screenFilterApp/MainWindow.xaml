@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:src="clr-namespace:NativeHelpers;assembly=NativeHelpers"
         mc:Ignorable="d"
-        Title="Screen Filter" Height="450" Width="800" Topmost="True" Style="{StaticResource WindowBorder}" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight">
+        Title="Screen Filter" Height="450" Width="800"
+        Topmost="True" Style="{StaticResource WindowBorder}" 
+        ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight">
 
     <Grid MouseLeftButtonDown="DragWindow">
         <DockPanel x:Name="ContentPanel">
