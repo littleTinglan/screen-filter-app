@@ -83,7 +83,6 @@
     <Compile Include="FilterdImage.xaml.cs">
       <DependentUpon>FilterdImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ScreenCapture.cs" />
     <Page Include="FilterdImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

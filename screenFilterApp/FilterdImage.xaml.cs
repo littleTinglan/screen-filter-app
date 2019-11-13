@@ -131,7 +131,6 @@ namespace screenFilterApp
 
         private void ApplyColorBlindFilter(object sender, RoutedEventArgs e)
         {
-            
             //WriteableBitmap bitMap = new WriteableBitmap((BitmapSource)capturedImg.Source);
             int width = (int)capturedImg.Source.Width;
             int height = (int)capturedImg.Source.Height;
