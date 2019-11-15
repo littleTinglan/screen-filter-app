@@ -160,8 +160,7 @@ namespace screenFilterApp
 
             // Timer setup
             myTimer = new System.Windows.Threading.DispatcherTimer();
-            myTimer.Interval = new TimeSpan(0, 0, 0); // tick every 5 seconds
-
+            myTimer.Interval = new TimeSpan(0, 0, 0); 
 
         }
 
@@ -179,6 +178,8 @@ namespace screenFilterApp
 
         private void CaptureScreenButtonClick(object sender, RoutedEventArgs e)
         {
+            StopUpdatenButtonClick(sender,e);
+
             // Hide UI when capture
             imageWindow.Hide();
             // Wait for the Hide() to finish
@@ -194,6 +195,7 @@ namespace screenFilterApp
             int height = clientRect.Bottom - clientRect.Top;
 
             TakeScreenShot();
+            this.Show();
         }
 
         private void LiveUpdatenButtonClick(object sender, RoutedEventArgs e)
@@ -204,6 +206,8 @@ namespace screenFilterApp
             {
                 stopUpdateBtn.Visibility = Visibility.Visible;
             }
+
+            imageWindow.isContinousUpdate = true;
 
             myTimer.Tick += new EventHandler(DispatcherTimer_Tick);
             myTimer.Start();
@@ -217,6 +221,8 @@ namespace screenFilterApp
             {
                 liveUpdateBtn.Visibility = Visibility.Visible;
             }
+
+            imageWindow.isContinousUpdate = false;
 
             myTimer.Stop();
         }

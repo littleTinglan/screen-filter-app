@@ -13,10 +13,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+
 using Color = System.Drawing.Color;
 
 namespace screenFilterApp
 {
+    
     public struct MyColor
     {
         public float r;
@@ -39,6 +42,8 @@ namespace screenFilterApp
     {
         // Public variables
         MyColor blindRed, blindGreen, blindBlue;
+        public bool isContinousUpdate = false;
+        DispatcherTimer filterTimer;
 
         BitmapSource defaultImg;
 
@@ -55,7 +60,17 @@ namespace screenFilterApp
             // start up location
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
+            // set up timer
+            filterTimer = new System.Windows.Threading.DispatcherTimer();
+            filterTimer.Interval = new TimeSpan(0, 0, 0);
+
             this.Closing += FilterdImage_Closing;
+
+        }
+
+        private void FilterTimer_Tick(object sender, EventArgs e)
+        {
+            ConvertColors();
         }
 
         public void StoreImage()
@@ -127,11 +142,12 @@ namespace screenFilterApp
                 blindGreen = new MyColor(0.29f, 0.58f, 0.11f);
                 blindBlue = new MyColor(0.29f, 0.58f, 0.11f);
             }
+
+            ApplyColorBlindFilter();
         }
 
-        private void ApplyColorBlindFilter(object sender, RoutedEventArgs e)
+        private void ConvertColors()
         {
-            //WriteableBitmap bitMap = new WriteableBitmap((BitmapSource)capturedImg.Source);
             int width = (int)capturedImg.Source.Width;
             int height = (int)capturedImg.Source.Height;
             WriteableBitmap bitMap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
@@ -170,6 +186,48 @@ namespace screenFilterApp
 
             bitMap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * 4, 0);
             capturedImg.Source = bitMap;
+        }
+
+        private void ApplyColorBlindFilter()
+        {
+            if (isContinousUpdate && normal_btn.IsChecked==false)
+            {
+                filterTimer.Tick += new EventHandler(FilterTimer_Tick);
+                filterTimer.Start();
+            }
+            else if (normal_btn.IsChecked==true && isContinousUpdate)
+            {
+                filterTimer.Stop();
+            }
+            else
+            {
+                filterTimer.Stop();
+                ConvertColors();
+            }
+
+            //int red;
+            //int green;
+            //int blue;
+            //int alpha;
+
+            //for (int x = 0; x < width; ++x)
+            //{
+            //    for (int y = 0; y < height; ++y)
+            //    {
+            //        Color pixColor = imageBitmap.GetPixel(x, y);
+            //        int i = width * y + x;
+
+            //        red = (int)(pixColor.R * blindRed.r + pixColor.G * blindRed.g + pixColor.B * blindRed.b);
+            //        green = (int)(pixColor.R * blindGreen.r + pixColor.G * blindGreen.g + pixColor.B * blindGreen.b);
+            //        blue = (int)(pixColor.R * blindBlue.r + pixColor.G * blindBlue.g + pixColor.B * blindBlue.b);
+            //        alpha = pixColor.A;
+
+            //        pixels[i] = (uint)((alpha << 24) + (red << 16) + (green << 8) + blue);
+            //    }
+            //}
+
+            //bitMap.WritePixels(new Int32Rect(0, 0, width, height), pixels, width * 4, 0);
+            //capturedImg.Source = bitMap;
         }
     }
 }
